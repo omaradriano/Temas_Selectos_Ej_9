@@ -1,11 +1,52 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Ejercicio 9</title>
-</head>
-<body>
-    
-</body>
+<html>
+    <head>
+        <title>Ejercicio n.9</title>
+
+        <script type="text/javascript">
+
+            function suma(){
+
+            var Calificacion1 = Number(document.getElementById('Calificacion1').value);
+            var Calificacion2 = Number(document.getElementById('Calificacion2').value);
+            var Calificacion3 = Number(document.getElementById('Calificacion3').value);
+
+            var Resultado = (Calificacion1 + Calificacion2 + Calificacion3)/3
+
+            document.getElementById('Resultado').value = Resultado
+            }
+
+            function borrarDatos() {
+        
+            document.getElementById('Calificacion1').value = '';
+            document.getElementById('Calificacion2').value = '';
+            document.getElementById('Calificacion3').value = '';
+            document.getElementById('Resultado').value = '';
+        }
+           
+
+        </script>
+
+    </head>
+    <body>
+
+        <p>Calificacion1</p>&nbsp;
+        <input type="text" id="Calificacion1" placeholder="Calificacion del primer parcial">
+        <br>
+        <br>
+        <p>Calificacion2</p>&nbsp;
+        <input type="text" id="Calificacion2" placeholder="Calificacion del segundo parcial">
+        <br>
+        <br>
+        <p>Calificacion3</p>&nbsp;
+        <input type="text" id="Calificacion3" placeholder="Calificacion del tercer parcial">
+        <br>
+        <br>
+        <p>Calificacion Final:</p>&nbsp;
+        <input type="text" id="Resultado">
+        <br>
+        <br>
+        <input type="button" value="Calificar" onclick="suma()">&nbsp;&nbsp;&nbsp;&nbsp;
+
+    </body>
 </html>
