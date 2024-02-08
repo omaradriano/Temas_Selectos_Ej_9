@@ -1,0 +1,163 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+:root {
+    --bg-color: #005247;
+    --title-tag-color: #942113;
+    --list-color: #FFE9D0;
+}
+
+body {
+    width: 100%;
+    height: 100vh;
+    max-width: 100%;
+    background-color: var(--bg-color);
+}
+
+.layout {
+    width: 100%;
+    height: 100%;
+
+    display: grid;
+    grid:
+        ". . list" 50px "title title list" 0.65fr "ball ball list" 1fr "ball ball list" 1fr / 1fr 1fr 1.5fr;
+    gap: 8px;
+}
+
+.list {
+    grid-area: list;
+    padding: 0 45px 30px 45px;
+}
+
+.list__figure {
+    height: 100%;
+    width: 100%;
+    clip-path: polygon(100% 0, 100% 86%, 50% 100%, 0 86%, 0 0);
+    background-color: var(--list-color);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding-top: 20px;
+}
+
+.list__items {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    height: auto;
+    width: 80%;
+    padding: 0 20px;
+    padding: 10px;
+    /* background-color: orange; */
+}
+
+.item {
+    /* background-color: red; */
+    display: flex;
+    flex-direction: row;
+    height: 25px;
+    width: 175px;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 10px;
+}
+
+.item > label {
+    font-family: Assistant;
+    font-weight: 700;
+    font-size: 24px;
+}
+
+.item > span {
+    font-family: Assistant;
+    font-size: 24px;
+    font-weight: 700;
+    color: var(--bg-color);
+}
+
+.item > input {
+    border-radius: 10px;
+    background-color: #005247;
+    height: 25px;
+    width: 25px;
+}
+
+.line {
+    width: 100%;
+    height: 2px;
+    background-color: black;
+    margin: 10px 0;
+}
+
+.total {
+    display: flex;
+    flex-direction: row;
+    align-items: center ;
+}
+
+.total > p {
+    font-size: 32px;
+    font-family: Assistant;
+    font-weight: 700;
+    margin-right: 20px;
+}
+
+.total > span {
+    font-size: 32px;
+    font-family: Assistant;
+    font-weight: 700;
+    color: var(--bg-color);
+}
+
+.title {
+    grid-area: title;
+}
+
+.title__figure {
+    min-width: 350px;
+    height: 100%;
+    width: 100%;
+    clip-path: polygon(100% 0, 85% 50%, 100% 100%, 0 100%, 0 0);
+    background-color: var(--title-tag-color);
+
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: center;
+    
+}
+
+.title__figure > h1 {
+    color: var(--c, #FFE9D0);
+    font-family: "Imperial Script";
+    font-size: 72px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+}
+
+.title__figure > p {
+    color: var(--c, #FFE9D0);
+    font-family: Assistant;
+    font-size: 20px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: normal;
+    position: relative;
+    bottom: 20px;
+    left: 25px;
+}
+.title__figure > h1, .title__figure > p {
+    transform: translate(35px, 0);
+}
+
+.ball {
+    grid-area: ball;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
