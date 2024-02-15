@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Lista de Artículos con Precios</title>
+</head>
+<body>
+
+<h2>Lista de Artículos</h2>
+
+<ul id="listaArticulos">
+  <li><input type="checkbox" value="Artículo 1" data-precio="10"> Artículo 1 - $10</li>
+  <li><input type="checkbox" value="Artículo 2" data-precio="20"> Artículo 2 - $20</li>
+  <li><input type="checkbox" value="Artículo 3" data-precio="30"> Artículo 3 - $30</li>
+  <li><input type="checkbox" value="Artículo 4" data-precio="15"> Artículo 4 - $15</li>
+  <li><input type="checkbox" value="Artículo 5" data-precio="25"> Artículo 5 - $25</li>
+</ul>
+
+<h2>Agregar Nueva Fruta</h2>
+<input type="text" id="nuevaFruta" placeholder="Nombre de la fruta">
+<input type="number" id="precioFruta" placeholder="Precio de la fruta">
+<button onclick="agregarFruta()">Agregar Fruta</button>
+
+<button onclick="agregarSeleccionados()">Agregar Seleccionados</button>
+
+<h2>Artículos Seleccionados</h2>
+
+<ul id="listaSeleccionados">
+  <!-- Los artículos seleccionados se agregarán aquí -->
+</ul>
+
+<h3>Total:</h3>
+<div id="total"></div>
+
+<script>
+function agregarSeleccionados() {
+  var checkboxes = document.querySelectorAll('#listaArticulos input[type="checkbox"]:checked');
+  var listaSeleccionados = document.getElementById("listaSeleccionados");
+  var total = 0;
+
+  listaSeleccionados.innerHTML = ''; // Limpiar lista anterior
+
+  checkboxes.forEach(function(checkbox) {
+    var nuevoElemento = document.createElement("li");
+    nuevoElemento.textContent = checkbox.value;
+    listaSeleccionados.appendChild(nuevoElemento);
+
+    var precio = parseFloat(checkbox.getAttribute('data-precio'));
+    total += precio;
+  });
+
+  document.getElementById('total').textContent = 'Total: $' + total.toFixed(2);
+}
+
+function agregarFruta() {
+  var nombreFruta = document.getElementById("nuevaFruta").value;
+  var precioFruta = parseFloat(document.getElementById("precioFruta").value);
+
+  if (nombreFruta.trim() === "" || isNaN(precioFruta) || precioFruta <= 0) {
+    alert("Por favor ingresa un nombre y un precio válido para la fruta.");
+    return;
+  }
+
+  var listaArticulos = document.getElementById("listaArticulos");
+  var nuevaFrutaItem = document.createElement("li");
+  nuevaFrutaItem.innerHTML = '<input type="checkbox" value="' + nombreFruta + '" data-precio="' + precioFruta + '"> ' + nombreFruta + ' - $' + precioFruta;
+  listaArticulos.appendChild(nuevaFrutaItem);
+
+  // Limpiar campos después de agregar la fruta
+  document.getElementById("nuevaFruta").value = "";
+  document.getElementById("precioFruta").value = "";
+}
+</script>
+
+</body>
+</html>
