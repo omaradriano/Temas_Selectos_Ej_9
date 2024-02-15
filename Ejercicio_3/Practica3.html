@@ -5,11 +5,17 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Lista de Artículos con Precios</title>
+  <!-- Custom css -->
+  <link rel="stylesheet" href="custom.css">
+  <!-- Google fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@300..700&display=swap" rel="stylesheet">
 </head>
 
 <body>
 
-  <h2>Lista de Artículos</h2>
+  <h2 class="text-light">Lista de Artículos</h2>
 
   <ul id="listaArticulos">
     <li><input type="checkbox" value="Artículo 1" data-precio="10"> Artículo 1 - $10</li>
@@ -19,14 +25,14 @@
     <li><input type="checkbox" value="Artículo 5" data-precio="25"> Artículo 5 - $25</li>
   </ul>
 
-  <h2>Agregar Nueva Fruta</h2>
-  <input type="text" id="nuevaFruta" placeholder="Nombre de la fruta">
-  <input type="number" id="precioFruta" placeholder="Precio de la fruta">
-  <button onclick="agregarFruta()">Agregar Fruta</button>
+  <h2 class="text-light">Agregar Nueva Fruta</h2>
+  <input class="data-input" type="text" id="nuevaFruta" placeholder="Nombre de la fruta">
+  <input class="data-input" type="number" id="precioFruta" placeholder="Precio de la fruta">
+  <button class="btn" onclick="agregarFruta()">Agregar Fruta</button>
 
-  <button onclick="agregarSeleccionados()">Agregar Seleccionados</button>
+  <button class="btn" onclick="agregarSeleccionados()">Agregar Seleccionados</button>
 
-  <h2>Artículos Seleccionados</h2>
+  <h2 class="text-light">Artículos Seleccionados</h2>
 
   <ul id="listaSeleccionados">
     <!-- Los artículos seleccionados se agregarán aquí -->
