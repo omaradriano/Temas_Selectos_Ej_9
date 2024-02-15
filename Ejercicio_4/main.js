@@ -3,7 +3,7 @@ function capitalizarPrimeraLetra() {
     var texto = document.getElementById("inputText").value;
 
     // Divide el texto en una lista de palabras separadas por comas
-    var palabras = texto.split(",");
+    var palabras = texto.split(" ");
 
     // Poner en mayuscula la primera letra de cada palabra
     var resultado = palabras.map(function (palabra) {

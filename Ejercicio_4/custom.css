@@ -1,0 +1,25 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Fredoka", sans-serif;
+}
+
+body {
+    width: 100%;
+    min-width: 100%;
+    background-color: rgb(55, 55, 55);
+    display: flex;
+    flex-direction: column;
+    align-items: center; 
+    padding-top: 50px;   
+}
+
+p {
+    margin-bottom: 20px;
+    color: azure;
+}
+
+li {
+    color: azure;
+}
