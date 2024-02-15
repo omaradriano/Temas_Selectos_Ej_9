@@ -5,7 +5,7 @@ function agregarSeleccionados() {
 
   listaSeleccionados.innerHTML = ''; // Limpiar lista anterior
 
-  checkboxes.forEach(function(checkbox) {
+  checkboxes.forEach(function (checkbox) {
     var nuevoElemento = document.createElement("li");
     nuevoElemento.textContent = checkbox.value;
     listaSeleccionados.appendChild(nuevoElemento);
@@ -13,6 +13,8 @@ function agregarSeleccionados() {
     var precio = parseFloat(checkbox.getAttribute('data-precio'));
     total += precio;
   });
+
+  console.log(total)
 
   document.getElementById('total').textContent = 'Total: $' + total.toFixed(2);
 }
