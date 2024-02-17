@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Practica 5</title>
+    <style>
+        table {
+            border-collapse: collapse;
+        }
+        td {
+            width: 30px;
+            height: 30px;
+            border: 2px solid rgb(12, 180, 231);
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <h1>Matriz 5x5 con diagonal de 1</h1>
+    <table id="tblMatriz">
+    </table>
+
+    <script>
+        function crearMatriz() {
+            var matriz = document.getElementById("tblMatriz");
+
+            for (var i = 0; i < 5; i++) {
+                var fila = document.createElement("tr");
+
+                for (var j = 0; j < 5; j++) {
+                    var celda = document.createElement("td");
+                    if (i === j) {
+                        celda.textContent = 1;
+                    } else {
+                        celda.textContent = 0;
+                    }
+                    fila.appendChild(celda);
+                }
+                matriz.appendChild(fila);
+            }
+        }
+        window.onload = crearMatriz;
+    </script>
+</body>
+</html>
