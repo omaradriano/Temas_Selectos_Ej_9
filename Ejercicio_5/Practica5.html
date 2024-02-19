@@ -1,25 +1,31 @@
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Practica 5</title>
-    <style>
-        table {
-            border-collapse: collapse;
-        }
-        td {
-            width: 30px;
-            height: 30px;
-            border: 2px solid rgb(12, 180, 231);
-            text-align: center;
-        }
-    </style>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Mandali&family=Vollkorn:ital,wght@0,400..900;1,400..900&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
 </head>
+
 <body>
-    <h1>Matriz 5x5 con diagonal de 1</h1>
-    <table id="tblMatriz">
-    </table>
+    <div class="container">
+        <div class="title">
+            <h1 class="titleH1">Matriz </h1>
+            <h1 class="h11">5x5</h1>
+            <h1 class="titleH1"> con diagonal de </h1>
+            <h1 class="h11">1</h1>
+        </div>
+        <div class="table">
+            <table id="tblMatriz">
+            </table>
+        </div>
+    </div>
 
     <script>
         function crearMatriz() {
@@ -43,4 +49,5 @@
         window.onload = crearMatriz;
     </script>
 </body>
+
 </html>
