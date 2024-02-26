@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head><link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Asap:ital,wght@0,100..900;1,100..900&family=Fira+Sans:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Gestor de Equipos de Desarrollo de Software</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+  <div id="equipos-lista" class="list"></div>
+
+  <div class="botones">
+    <div class="btn" onclick="mostrarFormulario('agregar')">Agregar equipo</div>
+    <div class="btn" onclick="mostrarFormulario('modificar')">Modificar equipo</div>
+    <div class="btn btn_2" onclick="mostrarEquipos()">Mostrar equipos</div>
+    <div class="btn" onclick="mostrarFormulario('eliminar')">Eliminar equipo</div>
+    <div class="btn" onclick="mostrarFormulario('buscar')">Buscar equipo</div>
+    <div class="btn btn_2" onclick="ordenarEquipos()"> Ordenar equipos por fecha de finalización </div>
+  </div>
+
+  <div id="form-container" class="form">
+    <h3 id="form-title"></h3>
+    <form id="equipo-form" onsubmit="procesarFormulario(); return false;">
+      <label for="nombre">Nombre:</label>
+      <input type="text" id="nombre" required /><br />
+
+      <label for="lider">Líder:</label>
+      <input type="text" id="lider" required /><br />
+
+      <label for="tecnologias">Tecnologías (separadas por coma):</label>
+      <input type="text" id="tecnologias" required /><br />
+
+      <label for="fechaFinalizacion">Fecha de Finalización (formato YYYY-MM-DD):</label>
+      <input type="text" id="fechaFinalizacion" required /><br />
+
+      <input type="submit" value="Guardar" />
+    </form>
+  </div>
+
+  <script src="practica6.js"></script>
+</body>
+
+</html>
