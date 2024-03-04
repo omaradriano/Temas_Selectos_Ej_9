@@ -1,0 +1,53 @@
+:root {
+    --primary: #FF03A9;
+    --bg: #141720;
+    --beige: #F3EBF7;
+    --brown: #BD7900;
+    --browner: #824800;
+}
+
+
+body {
+    margin: 0;
+}
+
+.container {
+    background: var(--bg);
+    display: flex;
+    width: 100%;
+    height: 100vh;
+    flex-direction: column;
+    align-items: center;
+    padding-top: 20vh;
+}
+
+.title {
+    font-family: "Vollkorn", serif;
+    font-optical-sizing: auto;
+    color: var(--beige);
+}
+
+h1 {
+    display: inline;
+}
+
+.h11 {
+    color: var(--primary);
+    font-family: "Mandali", sans-serif;
+}
+.table {
+    font-family: "Mandali", sans-serif;
+}
+
+table {
+    border-collapse: collapse;
+}
+
+td {
+    width: 30px;
+    height: 30px;
+    border: 4px solid var(--primary);
+    background-color: var(--beige);
+    color: var(--bg);
+    text-align: center;
+}
