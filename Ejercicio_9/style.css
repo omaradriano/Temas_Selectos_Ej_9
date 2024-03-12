@@ -1,0 +1,39 @@
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f2f2f2;
+    margin: 0;
+    padding: 20px;
+}
+
+h1 {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+#tblAvistamientos {
+    width: 80%;
+    margin: 0 auto;
+    border-collapse: collapse;
+    background-color: #ffffff;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    border: 3px solid rgb(71, 12, 5);
+}
+
+#tblAvistamientos th,
+#tblAvistamientos td {
+    padding: 10px;
+    border-bottom: 1px solid #ddd;
+    border: 3px solid rgb(71, 12, 5);
+}
+
+#tblAvistamientos th {
+    background-color: #1b23b9;
+}
+
+#tblAvistamientos td {
+    text-align: center;
+}
+
+#tblAvistamientos tr:last-child td {
+    border-bottom: none;
+}

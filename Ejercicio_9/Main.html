@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Avistamientos de ovnis(Practica 9)</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div>
+        <h1>Limpieza de datos</h1>
+        <table id="tblAvistamientos"></table>
+    </div>
+    <hr>
+    <div>
+        <h1>Grafica de barras</h1>
+        <canvas id="graficaDuraciones" width="400" height="400"></canvas>
+
+        <p>En este grafico se muestra la duracion de cada avistamiento en segundos vistos por cada fecha</p>
+    </div>
+    <hr>
+    <div>
+        <h1>Grafica de pastel</h1>
+        <canvas id="graficaDistribucionPais" width="400" height="400"></canvas>
+        <p>En este grafico se muestra la distribucion de avisamientos en cada estado en el que ocurrio dicho avistamiento</p>
+    </div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/PapaParse/5.3.0/papaparse.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="practica9.js"></script>
+</body>
+</html>
