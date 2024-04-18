@@ -1,4 +1,3 @@
-// Función para cargar el archivo CSV
 function cargarDatos() {
     return new Promise((resolve, reject) => {
         Papa.parse('Paises.csv', { 
@@ -15,7 +14,6 @@ function cargarDatos() {
     });
 }
 
-// Funcion que muestra los datos
 function mostrarDatos(datos) {
     var tabla = document.getElementById('tblPaises');
     tabla.innerHTML = '';
@@ -28,8 +26,6 @@ function mostrarDatos(datos) {
             filaEncabezado.appendChild(th);
         }
     }
-    
-    // Aqui se agregan las filas de los datos
     datos.forEach(function(row) {
         var fila = tabla.insertRow();
         for (var columna in row) {
@@ -41,19 +37,13 @@ function mostrarDatos(datos) {
     });
 }
 
-// Función para mostrar una gráfica de barras de poblacion
 function mostrarGrafica1(datos) {
-    // Filtrar los datos para descartar los que tienen valor 0 en 'Poblacion'
-    var datosFiltrados = datos.filter(row => row['Poblacion'] != 0);
 
-    // Obtener los valores de Capital y Poblacion
+    var datosFiltrados = datos.filter(row => row['Poblacion'] != 0);
     const Pobla = datosFiltrados.map(row => row['Poblacion']);
     const Capitales = datosFiltrados.map(row => row['Capital']);
-
-    // Crear el contexto del gráfico
     var ctx = document.getElementById('graficaPaises').getContext('2d');
 
-    // Crear la gráfica de barras
     var grafica = new Chart(ctx, {
         type: 'bar',
         data: {
@@ -70,19 +60,14 @@ function mostrarGrafica1(datos) {
     });
 }
 
-// Función para mostrar una gráfica de barras de area
-function mostrarGrafica2(datos) {
-    // Filtrar los datos para descartar los que tienen valor 0 en 'Area'
-    var datosFiltrados = datos.filter(row => row['Area que ocupa en km2'] <= 500000);
 
-    // Obtener los valores de Capital y Poblacion
+function mostrarGrafica2(datos) {
+
+    var datosFiltrados = datos.filter(row => row['Area que ocupa en km2'] <= 500000);
     const Area = datosFiltrados.map(row => row['Area que ocupa en km2']);
     const Capitales = datosFiltrados.map(row => row['Capital']);
-
-    // Crear el contexto del gráfico
     var ctx = document.getElementById('graficaArea').getContext('2d');
 
-    // Crear la gráfica de barras
     var graficaAr = new Chart(ctx, {
         type: 'bar',
         data: {
@@ -96,7 +81,7 @@ function mostrarGrafica2(datos) {
             }]
         },
         options: {
-            indexAxis: 'y',  // Cambiar el eje de índice a 'y' para hacer la gráfica horizontal
+            indexAxis: 'y',
             scales: {
                 x: {
                     beginAtZero: true
@@ -107,21 +92,14 @@ function mostrarGrafica2(datos) {
 }
 
 
-// Función para mostrar una gráfica de líneas
 function mostrarGrafica3(datos) {
-    // Filtrar los datos para descartar los que tienen valor 0 en 'Poblacion'
     var datosFiltrados = datos.filter(row => row['Poblacion'] <= 500000 && row['Poblacion'] != 0);
-
-    // Obtener los valores de Capital y Poblacion
     const Pobla = datosFiltrados.map(row => row['Poblacion']);
     const Capitales = datosFiltrados.map(row => row['Capital']);
-
-    // Crear el contexto del gráfico
     var ctx = document.getElementById('graficaLineas').getContext('2d');
 
-    // Crear la gráfica de líneas
     var grafica = new Chart(ctx, {
-        type: 'line',  // Cambiar 'bar' a 'line'
+        type: 'line',  
         data: {
             labels: Capitales,
             datasets: [{
@@ -136,9 +114,9 @@ function mostrarGrafica3(datos) {
             scales: {
                 x: {
                     ticks: {
-                        autoSkip: false,  // Desactivar el salto automático de etiquetas
-                        maxRotation: 90,  // Permitir una rotación máxima de 90 grados
-                        minRotation: 90   // Establecer una rotación mínima de 90 grados
+                        autoSkip: false,  
+                        maxRotation: 90,  
+                        minRotation: 90   
                     }
                 },
                 y: {
@@ -152,12 +130,130 @@ function mostrarGrafica3(datos) {
 }
 
 
-// Llamar a la función para cargar los datos y luego mostrar la tabla
+
+function mostrarGrafica4(datos) {
+    var datosFiltrados = datos.filter(row => row['Poblacion'] <= 500000 &&  row['Poblacion'] > 100000 );
+
+    const Poblacion = datosFiltrados.map(row => row['Poblacion']);
+    const Capitales = datosFiltrados.map(row => row['Capital']);
+    const Area = datosFiltrados.map(row => row['Area que ocupa en km2']);
+    var ctx = document.getElementById('graficaRadar').getContext('2d');
+
+    var graficaRd = new Chart(ctx, {
+        type: 'radar',  
+        data: {
+            labels: Capitales,
+            datasets: [{
+                label: 'Poblacion de la capital de pais',
+                data: Poblacion,
+                backgroundColor: 'rgba(54, 162, 235, 0.2)',
+                borderColor: 'rgba(54, 162, 235, 1)',
+                borderWidth: 2
+            },
+            {
+                label: 'Area que ocupa la capital en km2',
+                data: Area,
+                backgroundColor: 'rgba(255, 99, 132, 0.2)',
+                borderColor: 'rgba(255, 99, 132, 1)',
+                borderWidth: 2
+            }]
+        },
+        options: {
+            scales: {
+                r: {
+                    beginAtZero: true
+                }
+            }
+        }
+    });
+}
+
+function mostrarGrafica5(datos) {
+    var datosFiltrados = datos.filter(row => row['Poblacion'] <= 500000 &&  row['Poblacion'] > 100000);
+
+    const Poblacion = datosFiltrados.map(row => row['Poblacion']);
+    const Capitales = datosFiltrados.map(row => row['Capital']);
+   
+
+    var ctx = document.getElementById('polarArea').getContext('2d');
+
+    var graficaPolarArea = new Chart(ctx, {
+        type: 'polarArea', 
+        data: {
+            labels: Capitales,
+            datasets: [{
+                label: 'Poblacion de la capital de pais',
+                data: Poblacion,
+                backgroundColor: 'rgba(54, 162, 235, 0.2)',
+                borderColor: 'rgba(54, 162, 235, 1)',
+                borderWidth: 2
+            }]
+        },
+        options: {
+            scales: {
+                r: {
+                    beginAtZero: true
+                }
+            }
+        }
+    });
+}
+
+function mostrarGrafica6(datos) {
+    var datosFiltrados = datos.filter(row => row['Poblacion'] <= 500000 &&  row['Poblacion'] > 100000 );
+
+    const Poblacion = datosFiltrados.map(row => row['Poblacion']);
+    const Capitales = datosFiltrados.map(row => row['Capital']);
+    const Area = datosFiltrados.map(row => row['Area que ocupa en km2']);
+
+    var ctx = document.getElementById('comparativa').getContext('2d');
+
+    var graficaComparativa = new Chart(ctx, {
+        type: 'bar', 
+        data: {
+            labels: Capitales,
+            datasets: [{
+                label: 'Poblacion de la capital de pais',
+                data: Poblacion,
+                backgroundColor: 'rgba(54, 162, 235, 0.2)',
+                borderColor: 'rgba(54, 162, 235, 1)',
+                borderWidth: 2
+            },
+            {
+                label: 'Area que ocupa la capital en km2',
+                data: Area,
+                backgroundColor: 'rgba(255, 99, 132, 0.2)',
+                borderColor: 'rgba(255, 99, 132, 1)',
+                borderWidth: 2
+            }]
+        },
+        options: {
+            scales: {
+                x: {
+                    ticks: {
+                        autoSkip: false,  
+                        maxRotation: 90,  
+                        minRotation: 90   
+                    }
+                },
+                y: {
+                    ticks: {
+                        beginAtZero: true
+                    }
+                }
+            }
+        }
+    });
+}
+
 cargarDatos().then(function(data) {
-    mostrarDatos(data); // Mostrar la tabla
-    mostrarGrafica1(data); // Mostrar la gráfica
-    mostrarGrafica2(data); // Mostrar la gráfica
-    mostrarGrafica3(data); // Mostrar la gráfica
+    mostrarDatos(data); 
+    mostrarGrafica1(data); 
+    mostrarGrafica2(data); 
+    mostrarGrafica3(data); 
+    mostrarGrafica4(data); 
+    mostrarGrafica5(data); 
+    mostrarGrafica6(data); 
 }).catch(function(error) {
     console.error('Error al cargar los datos:', error);
 });
