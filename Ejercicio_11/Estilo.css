@@ -1,0 +1,34 @@
+/* Estilo para la tabla */
+#TablaCiudades {
+    border-collapse: collapse;
+    width: 100%;
+    margin-top: 20px;
+  }
+  
+  /* Estilo para las celdas de la tabla */
+  #TablaCiudades td, #TablaCiudades th {
+    border: 1px solid #dddddd;
+    padding: 8px;
+    text-align: left;
+  }
+  
+  /* Estilo para el encabezado de la tabla */
+  #TablaCiudades th {
+    background-color: #f2f2f2;
+  }
+  
+  /* Estilo para las filas pares de la tabla */
+  #TablaCiudades tr:nth-child(even) {
+    background-color: #f9f9f9;
+  }
+  
+  /* Estilo para las filas impares de la tabla */
+  #TablaCiudades tr:nth-child(odd) {
+    background-color: #ffffff;
+  }
+  
+  /* Estilo para cuando el cursor pasa sobre una fila */
+  #TablaCiudades tr:hover {
+    background-color: #e9e9e9;
+  }
+  
