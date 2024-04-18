@@ -49,7 +49,7 @@ function mostrarGrafica1(datos) {
         data: {
             labels: Capitales,
             datasets: [{
-                label: 'Cantidad de poblacon por capital de pais',
+                label: 'Cantidad de poblacion por capital de pais',
                 data: Pobla,
                 backgroundColor: 'rgba(54, 162, 235, 0.2)',
                 borderColor: 'rgba(54, 162, 235, 1)',

@@ -1,39 +1,61 @@
 body {
   font-family: Arial, sans-serif;
-  background-color: #f2f2f2;
   margin: 0;
-  padding: 20px;
+  padding: 0;
+}
+
+.container {
+  max-width: 1200px;
+  margin: 20px auto;
+  padding: 0 20px;
 }
 
 h1 {
+  color: #333;
+  margin-bottom: 10px;
   text-align: center;
+}
+
+p {
+  color: #666;
+  margin-bottom: 20px;
+  text-align: center;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
   margin-bottom: 20px;
 }
 
+table, th, td {
+  border: 1px solid #ddd;
+  padding: 8px;
+}
+
+thead {
+  background-color: #f2f2f2;
+}
+
+canvas {
+  border: 1px solid #ddd;
+  display: block;
+  margin-bottom: 20px;
+}
+
+/* Estilos específicos para cada sección */
 #tblPaises {
   width: 80%;
   margin: 0 auto;
-  border-collapse: collapse;
-  background-color: #ffffff;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-  border: 3px solid rgb(71, 12, 5);
 }
 
-#tblPaises th,
-#tblPaises td {
-  padding: 10px;
-  border-bottom: 1px solid #ddd;
-  border: 3px solid rgb(71, 12, 5);
-}
-
-#tblPaises th {
-  background-color: #1b23b9;
-}
-
-#tblPaises td {
-  text-align: center;
-}
-
-#tblPaises tr:last-child td {
-  border-bottom: none;
+#graficaPaises,
+#graficaArea,
+#graficaLineas,
+#graficaRadar,
+#polarArea,
+#comparativa {
+  width: 100%;
+  max-width: 800px;
+  margin: 0 auto;
 }

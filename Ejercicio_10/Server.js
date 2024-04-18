@@ -4,8 +4,7 @@ const app = express();
 const port = 3000;
 
 app.get('/convert', (req, res) => {
-   
-
+    console.log('Convirtiendo a CSV')
     const fs = require('fs');
     const jsdom = require('jsdom');
     const csvWriter = require('csv-writer').createObjectCsvWriter;
