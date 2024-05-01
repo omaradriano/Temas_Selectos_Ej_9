@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Visualización y Edición de Datos de Países</title>
+    <!-- Agrega el enlace al archivo de Tailwind CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+</head>
+<body class="bg-gray-100">
+    <div class="container mx-auto p-4">
+        <h1 class="text-3xl font-bold mb-8">Países del Mundo</h1>
+        
+        <!-- Formulario para agregar un nuevo país -->
+        <form id="addForm" class="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4">
+            <h2 class="text-xl font-bold mb-4">Agregar País</h2>
+            <div class="mb-4">
+                <label class="block text-gray-700 text-sm font-bold mb-2" for="nombre">Nombre del País:</label>
+                <input type="text" id="nombre" name="nombre" required class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline">
+            </div>
+            <div class="mb-4">
+                <label class="block text-gray-700 text-sm font-bold mb-2" for="capital">Capital:</label>
+                <input type="text" id="capital" name="capital" required class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline">
+            </div>
+            <div class="mb-4">
+                <label class="block text-gray-700 text-sm font-bold mb-2" for="poblacion">Población:</label>
+                <input type="number" id="poblacion" name="poblacion" required class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline">
+            </div>
+            <div class="mb-4">
+                <label class="block text-gray-700 text-sm font-bold mb-2" for="area">Área (km²):</label>
+                <input type="number" id="area" name="area" required class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline">
+            </div>
+            <button type="submit" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline">Agregar País</button>
+        </form>
+
+        <!-- Tabla para mostrar los datos -->
+        <table id="dataTable" class="table-auto bg-white shadow-md rounded w-full">
+            <thead>
+                <tr>
+                    <th class="px-4 py-2">País</th>
+                    <th class="px-4 py-2">Capital</th>
+                    <th class="px-4 py-2">Población</th>
+                    <th class="px-4 py-2">Área (km²)</th>
+                </tr>
+            </thead>
+            <tbody id="dataBody">
+                <!-- Aquí se mostrarán los datos -->
+            </tbody>
+        </table>
+    </div>
+
+    <script>
+         // Función para obtener y mostrar los datos de la API REST
+         async function fetchData() {
+            const response = await fetch('http://localhost:3300/api/data');
+            const data = await response.json();
+            const tableBody = document.getElementById('dataBody');
+
+            tableBody.innerHTML = '';
+            data.forEach(item => {
+                const row = `<tr>
+                                <td>${item.Pais}</td>
+                                <td>${item.Capital}</td>
+                                <td>${item.Poblacion}</td>
+                                <td>${item["Area que ocupa en km2"]}</td>
+                            </tr>`;
+                tableBody.insertAdjacentHTML('beforeend', row);
+            });
+        }
+        // Función para manejar el envío del formulario de agregar país
+        async function handleSubmit(event) {
+    event.preventDefault();
+    const form = event.target;
+    const formData = new FormData(form);
+
+    // Convertir FormData a objeto JavaScript
+    let formObj = {};
+    for (let [key, value] of formData.entries()) {
+        formObj[key] = value;
+    }
+
+    try {
+        const response = await fetch('http://localhost:3300/api/add', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(formObj)
+        });
+        if (response.ok) {
+            fetchData();
+            form.reset();
+        } else {
+            console.error('Error al agregar país:', response.statusText);
+        }
+    } catch (error) {
+        console.error('Error de red:', error);
+    }
+}
+        // Al cargar la página, obtener y mostrar los datos
+        fetchData();
+
+        // Agregar evento de envío al formulario
+        const addForm = document.getElementById('addForm');
+        addForm.addEventListener('submit', handleSubmit);
+    </script>
+</body>
+</html>
