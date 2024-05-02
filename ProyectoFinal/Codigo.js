@@ -132,10 +132,10 @@ async function handleModify(event) {
 }
 
 
-//Funcion para buscar una capital en eliminacion
-async function handleSearch3(event) {
+//Funcion para buscar una capital en borrar
+async function buscarPaisEliminacion(event) {
     event.preventDefault();
-    const nombre = document.getElementById('modifyInput').value;
+    const nombre = document.getElementById('deleteInput').value;
     try {
         const response = await fetch(`http://localhost:3300/api/search/${nombre}`);
         if (response.ok) {
@@ -144,9 +144,9 @@ async function handleSearch3(event) {
             alert('Se encontro el pais ' + nombre);
 
             //Mostrar los datos en los campos del formulario
-            document.getElementById('capitalModify').value = data.Capital;
-            document.getElementById('poblacionModify').value = data.Poblacion;
-            document.getElementById('areaModify').value = data.Area;
+            document.getElementById('capitalDelete').value = data.Capital;
+            document.getElementById('poblacionDelete').value = data.Poblacion;
+            document.getElementById('areaDelete').value = data.Area;
         } else {
             console.error('Error al buscar país:', response.statusText);
             alert('No se encontro el pais: ' + nombre);
@@ -167,6 +167,7 @@ async function handleDelete(event) {
             method: 'DELETE'
         });
         if (response.ok) {
+            alert('Se elimino el pais ' + nombre);
             fetchData();
         } else {
             console.error('Error al eliminar país:', response.statusText);
@@ -199,10 +200,9 @@ modifyButton.addEventListener('click', handleModify);
 
 
 //Eventos de eliminacion//
-
 // Evento de búsqueda
-const searchButtonDelete = document.getElementById('buscarButtonDelete');
-searchButton.addEventListener('click', handleSearch3);
+const buttonDelete = document.getElementById('buscarButtonDelete');
+buttonDelete.addEventListener('click', buscarPaisEliminacion);
 
 //Evento de eliminacion
 const deleteButton = document.getElementById('deleteButton');

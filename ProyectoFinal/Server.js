@@ -74,7 +74,7 @@ app.get('/api/search/:nombre', (req, res) => {
       if (paisEncontrado) {
         res.json(paisEncontrado);
       } else {
-        res.status(404).send('Pais no encontrada');
+        res.status(404).send('Pais no encontrado');
       }
     });
 });
