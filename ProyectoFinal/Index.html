@@ -37,7 +37,8 @@
                     class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline">
             </div>
             <button type="submit"
-                class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline">Agregar Pais</button>
+                class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline">Agregar
+                Pais</button>
         </form>
 
         <!-- Formulario para buscar un país -->
@@ -70,7 +71,8 @@
                 class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline">Buscar
                 País</button>
             <button type="reset"
-                class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline">Borrar datos</button>
+                class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline">Borrar
+                datos</button>
         </form>
 
         <!-- Formulario para modificar un país -->
@@ -80,6 +82,41 @@
                 <label class="block text-gray-700 text-sm font-bold mb-2" for="modifyInput">Nombre del pais a
                     modificar:</label>
                 <input type="text" id="modifyInput" name="modifyInput"
+                    class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline">
+            </div>
+            <div class="mb-4">
+                <label class="block text-gray-700 text-sm font-bold mb-2" for="nombre">Capital:</label>
+                <input type="text" id="capitalModify" name="nombre"
+                    class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline">
+            </div>
+            <div class="mb-4">
+                <label class="block text-gray-700 text-sm font-bold mb-2" for="poblacion">Población:</label>
+                <input type="text" id="poblacionModify" name="poblacion"
+                    class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline">
+            </div>
+            <div class="mb-4">
+                <label class="block text-gray-700 text-sm font-bold mb-2" for="area">Área (km²):</label>
+                <input type="text" id="areaModify" name="area"
+                    class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline">
+            </div>
+            <button type="button" id="buscarButton"
+                class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline">Buscar
+                País</button>
+            <button type="button" id="modifyButton"
+                class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline">Modificar
+                País</button>
+            <button type="reset"
+                class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline">Borrar
+                datos</button>
+        </form>
+
+        <!-- Formulario para eliminar un país -->
+        <form id="deleteForm" class="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4">
+            <h2 class="text-xl font-bold mb-4">Eliminar Pais</h2>
+            <div class="mb-4">
+                <label class="block text-gray-700 text-sm font-bold mb-2" for="deleteInput">Nombre del pais a
+                    eliminar:</label>
+                <input type="text" id="deleteInput" name="deleteInput"
                     class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline">
             </div>
             <div class="mb-4">
@@ -100,26 +137,15 @@
                     class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
                     readonly>
             </div>
-
-
-            <!-- Aquí podrías agregar los campos para modificar el país -->
-            <button type="submit"
-                class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline">Modificar
-                País</button>
-        </form>
-
-        <!-- Formulario para eliminar un país -->
-        <form id="deleteForm" class="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4">
-            <h2 class="text-xl font-bold mb-4">Eliminar Pais</h2>
-            <div class="mb-4">
-                <label class="block text-gray-700 text-sm font-bold mb-2" for="deleteInput">Nombre del pais a
-                    eliminar:</label>
-                <input type="text" id="deleteInput" name="deleteInput"
-                    class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline">
-            </div>
-            <button type="submit"
+            <button type="button" id="buscarButtonDelete"
+            class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline">Buscar
+            País</button>
+            <button type="button" id="deleteButton"
                 class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline">Eliminar
                 País</button>
+            <button type="reset"
+                class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline">Borrar
+                datos</button>
         </form>
 
         <!-- Aqui esta la tabla -->

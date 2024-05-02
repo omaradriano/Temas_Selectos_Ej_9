@@ -74,7 +74,7 @@ app.get('/api/search/:nombre', (req, res) => {
       if (paisEncontrado) {
         res.json(paisEncontrado);
       } else {
-        res.status(404).send('Capital no encontrada');
+        res.status(404).send('Pais no encontrada');
       }
     });
 });
@@ -98,10 +98,10 @@ app.put('/api/modify/:nombre', (req, res) => {
       const csvWriter = createCsvWriter({
         path: 'Paises.csv',
         header: [
-          { id: 'Pais', title: 'PAIS' },
-          { id: 'Capital', title: 'CAPITAL' },
-          { id: 'Poblacion', title: 'POBLACION' },
-          { id: 'Area', title: 'AREA' },
+          { id: 'Pais', title: 'Pais' },
+          { id: 'Capital', title: 'Capital' },
+          { id: 'Poblacion', title: 'Poblacion' },
+          { id: 'Area', title: 'Area' },
         ],
         // Aqui se sobreescribe el archivo CSV con los datos modificados
         append: false,
@@ -109,10 +109,10 @@ app.put('/api/modify/:nombre', (req, res) => {
 
       csvWriter
         .writeRecords(data)
-        .then(() => res.send('Capital modificado exitosamente'))
+        .then(() => res.send('Pais modificado exitosamente'))
         .catch((err) => {
-          console.error('Error al modificar la capital:', err);
-          res.status(500).send('Error al modificar la capital');
+          console.error('Error al modificar el pais:', err);
+          res.status(500).send('Error al modificar el pais');
         });
     });
 });
@@ -136,10 +136,10 @@ app.delete('/api/delete/:nombre', (req, res) => {
       const csvWriter = createCsvWriter({
         path: 'Paises.csv',
         header: [
-          { id: 'Pais', title: 'PAIS' },
-          { id: 'Capital', title: 'CAPITAL' },
-          { id: 'Poblacion', title: 'POBLACION' },
-          { id: 'Area', title: 'AREA' },
+          { id: 'Pais', title: 'Pais' },
+          { id: 'Capital', title: 'Capital' },
+          { id: 'Poblacion', title: 'Poblacion' },
+          { id: 'Area', title: 'Area' },
         ],
         //Se sobreescribe el archivo CSV con los datos restantes
         append: false,
@@ -149,8 +149,8 @@ app.delete('/api/delete/:nombre', (req, res) => {
         .writeRecords(data)
         .then(() => res.send('País eliminado exitosamente'))
         .catch((err) => {
-          console.error('Error al eliminar la capital:', err);
-          res.status(500).send('Error al eliminar la capital');
+          console.error('Error al eliminar pais:', err);
+          res.status(500).send('Error al eliminar pais');
         });
     });
 });
