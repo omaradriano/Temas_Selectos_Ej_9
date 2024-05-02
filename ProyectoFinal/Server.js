@@ -3,6 +3,7 @@ const csv = require('csv-parser');
 const fs = require('fs');
 const cors = require('cors');
 const { createObjectCsvWriter } = require('csv-writer');
+const createCsvWriter = require('csv-writer').createObjectCsvWriter;
 
 
 // Crear una instancia de Express
@@ -60,27 +61,100 @@ app.post('/api/add', (req, res) => {
 // Ruta para buscar un país por nombre
 app.get('/api/search/:nombre', (req, res) => {
   const nombre = req.params.nombre;
-  // Leer el archivo CSV y buscar el país
+  let paisEncontrado = null;
 
-  // Aquí necesitarás una función para leer el archivo CSV y buscar el país
+  fs.createReadStream('Paises.csv')
+    .pipe(csv())
+    .on('data', (data) => {
+      if (data.Pais === nombre) {
+        paisEncontrado = data;
+      }
+    })
+    .on('end', () => {
+      if (paisEncontrado) {
+        res.json(paisEncontrado);
+      } else {
+        res.status(404).send('Capital no encontrada');
+      }
+    });
 });
 
 // Ruta para modificar un país
 app.put('/api/modify/:nombre', (req, res) => {
   const nombre = req.params.nombre;
   const datos = req.body;
-  // Leer el archivo CSV, buscar el país y modificarlo
-  // Aquí necesitarás una función para leer el archivo CSV, buscar el país y modificarlo
+  let data = [];
+
+  fs.createReadStream('Paises.csv')
+    .pipe(csv())
+    .on('data', (row) => {
+      if (row.Pais === nombre) {
+        // Aqui se modifican los datos del país
+        row = { ...row, ...datos };
+      }
+      data.push(row);
+    })
+    .on('end', () => {
+      const csvWriter = createCsvWriter({
+        path: 'Paises.csv',
+        header: [
+          { id: 'Pais', title: 'PAIS' },
+          { id: 'Capital', title: 'CAPITAL' },
+          { id: 'Poblacion', title: 'POBLACION' },
+          { id: 'Area', title: 'AREA' },
+        ],
+        // Aqui se sobreescribe el archivo CSV con los datos modificados
+        append: false,
+      });
+
+      csvWriter
+        .writeRecords(data)
+        .then(() => res.send('Capital modificado exitosamente'))
+        .catch((err) => {
+          console.error('Error al modificar la capital:', err);
+          res.status(500).send('Error al modificar la capital');
+        });
+    });
 });
+
+
 
 // Ruta para eliminar un país
 app.delete('/api/delete/:nombre', (req, res) => {
   const nombre = req.params.nombre;
-  // Leer el archivo CSV, buscar el país y eliminarlo
-  // Aquí necesitarás una función para leer el archivo CSV, buscar el país y eliminarlo
-});
+  let data = [];
 
-// Iniciar el servidor
+  fs.createReadStream('Paises.csv')
+    .pipe(csv())
+    .on('data', (row) => {
+      if (row.Pais !== nombre) {
+        //Solo se agrega la fila a los nuevos datos si no es el país a eliminar
+        data.push(row);
+      }
+    })
+    .on('end', () => {
+      const csvWriter = createCsvWriter({
+        path: 'Paises.csv',
+        header: [
+          { id: 'Pais', title: 'PAIS' },
+          { id: 'Capital', title: 'CAPITAL' },
+          { id: 'Poblacion', title: 'POBLACION' },
+          { id: 'Area', title: 'AREA' },
+        ],
+        //Se sobreescribe el archivo CSV con los datos restantes
+        append: false,
+      });
+
+      csvWriter
+        .writeRecords(data)
+        .then(() => res.send('País eliminado exitosamente'))
+        .catch((err) => {
+          console.error('Error al eliminar la capital:', err);
+          res.status(500).send('Error al eliminar la capital');
+        });
+    });
+});
+// Aqui se inicia el servidor en el puerto 3300
 app.listen(PORT, () => {
   console.log(`Servidor corriendo en el puerto ${PORT}`);
 });
