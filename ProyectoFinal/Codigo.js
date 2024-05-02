@@ -77,6 +77,13 @@ async function handleSearch(event) {
 async function handleSearch2(event) {
     event.preventDefault();
     const nombre = document.getElementById('modifyInput').value;
+
+    //Verificar que se haya ingresado un nombre
+    if (!nombre) {
+        alert('Por favor, ingrese un nombre de país');
+        return;
+    }
+
     try {
         const response = await fetch(`http://localhost:3300/api/search/${nombre}`);
         if (response.ok) {
@@ -104,6 +111,12 @@ async function handleModify(event) {
     const capital = document.getElementById('capitalModify').value;
     const poblacion = document.getElementById('poblacionModify').value;
     const area = document.getElementById('areaModify').value;
+
+    //Verificar que se haya ingresado un nombre
+    if (!nombre) {
+        alert('Por favor, ingrese un nombre de país');
+        return;
+    }
 
     const datos = {
         Pais: nombre,
@@ -136,6 +149,13 @@ async function handleModify(event) {
 async function buscarPaisEliminacion(event) {
     event.preventDefault();
     const nombre = document.getElementById('deleteInput').value;
+
+    //Verificar que se haya ingresado un nombre
+    if (!nombre) {
+        alert('Por favor, ingrese un nombre de país');
+        return;
+    }
+
     try {
         const response = await fetch(`http://localhost:3300/api/search/${nombre}`);
         if (response.ok) {
@@ -161,6 +181,12 @@ async function buscarPaisEliminacion(event) {
 async function handleDelete(event) {
     event.preventDefault();
     const nombre = document.getElementById('deleteInput').value;
+
+    //Verificar que se haya ingresado un nombre
+    if (!nombre) {
+        alert('Por favor, ingrese un nombre de país');
+        return;
+    }
 
     // Aqui se muestra un cuadro de diálogo de confirmación
     const confirmacion = confirm(`¿Estás seguro de que deseas eliminar el país ${nombre}?`);
