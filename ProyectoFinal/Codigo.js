@@ -162,20 +162,33 @@ async function handleDelete(event) {
     event.preventDefault();
     const nombre = document.getElementById('deleteInput').value;
 
-    try {
-        const response = await fetch(`http://localhost:3300/api/delete/${nombre}`, {
-            method: 'DELETE'
-        });
-        if (response.ok) {
-            alert('Se elimino el pais ' + nombre);
-            fetchData();
-        } else {
-            console.error('Error al eliminar país:', response.statusText);
+    // Aqui se muestra un cuadro de diálogo de confirmación
+    const confirmacion = confirm(`¿Estás seguro de que deseas eliminar el país ${nombre}?`);
+
+    // Esto se ejecuta si le da clic en Aceptar
+    if (confirmacion) {
+        try {
+            const response = await fetch(`http://localhost:3300/api/delete/${nombre}`, {
+                method: 'DELETE'
+            });
+            if (response.ok) {
+                fetchData();
+            } else {
+                alert('Error al eliminar país:' + nombre);
+                console.error('Error al eliminar país:', response.statusText);
+            }
+        } catch (error) {
+            console.error('Error de red:', error);
         }
-    } catch (error) {
-        console.error('Error de red:', error);
+    } else {
+        alert('Se cancelo la eliminacion del pais ' + nombre);
+        console.log('Cancelado');
     }
 }
+
+
+
+
 
 // Al cargar la página, obtener y mostrar los datos
 fetchData();
